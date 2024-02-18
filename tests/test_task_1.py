@@ -16,9 +16,14 @@ def eeployee_product():
 def test_init_category(eeployee_category):
     assert eeployee_category.name == "телефоны"
     assert eeployee_category.description == "мобильные смартфоны с сенсорным экраном"
-    assert eeployee_category.product == ["Iphone 15ProMax", "Samsung", "Iphone", "Iphone"]
+    assert eeployee_category._products == ["Iphone 15ProMax", "Samsung", "Iphone", "Iphone"]
     assert eeployee_category.total_category == 1
     assert eeployee_category.unique_product == 3
+
+def test_get_product(eeployee_category):
+    assert eeployee_category.get_product("Xiaomi") == None
+
+
 
 def test_init_product(eeployee_product):
     assert eeployee_product.name == "Iphone 15ProMax"
@@ -26,3 +31,5 @@ def test_init_product(eeployee_product):
     assert eeployee_product.price == 120000
     assert eeployee_product.quantity == 10
 
+def test_get_product(eeployee_product):
+    assert eeployee_product.get_product("Xiaomi", "Китай", 100000, 10) == ["Xiaomi", "Китай", 100000, 10]
