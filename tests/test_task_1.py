@@ -1,6 +1,7 @@
 import pytest
 
-from task_1 import *
+from Class_Category import Category
+from Class_Product import Product
 
 
 @pytest.fixture
