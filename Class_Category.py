@@ -2,7 +2,7 @@ class Category:
     """Класс категории товаров"""
 
     total_category = 0
-    unique_product = []
+    unique_product = 0
 
     def __init__(self, name, description, products):  # Задание 2
         self.name = name
@@ -10,20 +10,27 @@ class Category:
         self._products = products
 
         Category.total_category += 1
-        #Category.unique_product += len(set(list(self.get_uniq_prod().get("name"))))
-        Category.unique_product.append(set(list(self.get_uniq_prod().get("name"))))
+        Category.unique_product += len(list(set(self.get_uniq_prod())))
 
     def get_uniq_prod(self):
+        name_prod = []
         for product in self._products:
-            return product
+            name_prod.append(product.get("name"))
 
+        return name_prod
+
+    @property
+    def get_product(self):
+        return self._products
+
+    @get_product.setter
     def get_product(self, product):
         return self._products.append(product)
 
     @property
     def get_list(self):
+        product_list = ""
         for product in self._products:
-            return f'{product.get("name")}, {product.get("price")} руб. Остаток: {product.get("quantity")} шт.'
+            product_list += f'\n{product.get("name")}, {product.get("price")} руб. Остаток: {product.get("quantity")} шт.'
 
-    def __str__(self):
-        return f"{self.name}, {self.description}, {Category.total_category}, {Category.unique_product}"
+        return product_list
