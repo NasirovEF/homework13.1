@@ -10,7 +10,7 @@ class Category:
         self.__products = products
 
         Category.total_category += 1
-        Category.unique_product += len(set(self.__products))
+        #Category.unique_product += len(set(list(self.get_product)))
 
     @property
     def get_product(self):

@@ -1,7 +1,7 @@
 class Product:
     """Класс товара"""
 
-    def __init__(self, name, description, price, quantity):  # Задание 2
+    def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
         self.__price = price
@@ -25,7 +25,19 @@ class Product:
             if user_input.lower() == "y":
                 self.__price = price
             else:
-                print("Цена сохранена прежняя")
+                return "Цена сохранена прежняя"
 
         else:
             self.__price = price
+
+
+prod_1 = {
+        "name": "Iphone 15",
+        "description": "512GB, Gray space",
+        "price": 210000.0,
+        "quantity": 8
+      }
+
+#cls_prod_1 = Product(**prod_1)
+
+#print(cls_prod_1.get_price(0))

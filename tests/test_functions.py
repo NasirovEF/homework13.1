@@ -1,6 +1,4 @@
-import pytest
-import json
-from functions import *
+from src.functions import *
 
 
 def test_read_file():
