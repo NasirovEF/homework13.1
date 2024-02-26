@@ -1,6 +1,6 @@
 import json
-from Class_Category import Category
-from Class_Product import Product
+from class_category import Category
+from class_product import Product
 
 
 def read_file(filee_json):
