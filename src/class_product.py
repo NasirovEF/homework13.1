@@ -30,14 +30,8 @@ class Product:
         else:
             self.__price = price
 
+    def __str__(self):
+        return f'\n{self.name}, {self.get_price} руб. Остаток: {self.quantity} шт.'
 
-prod_1 = {
-        "name": "Iphone 15",
-        "description": "512GB, Gray space",
-        "price": 210000.0,
-        "quantity": 8
-      }
-
-#cls_prod_1 = Product(**prod_1)
-
-#print(cls_prod_1.get_price(0))
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
