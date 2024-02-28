@@ -21,7 +21,7 @@ def test_init_category(eeployee_category):
                                             'description': '256GB, Серый цвет, 200MP камера',
                                             'price': 180000.0, 'quantity': 5}]
     assert eeployee_category.total_category == 1
-    #assert eeployee_category.unique_product == 1
+    assert eeployee_category.unique_product == 1
 
 
 def test_get_product(eeployee_category):
