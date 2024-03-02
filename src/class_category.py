@@ -13,7 +13,7 @@ class Category:
         self.__products = products
 
         Category.total_category += 1
-        Category.unique_product += len(set(list(self.get_product)))
+        Category.unique_product += len(set(self.get_product))
 
     @property
     def get_product(self):
@@ -21,13 +21,13 @@ class Category:
 
     @get_product.setter
     def get_product(self, product):
-        return self.__products.append(product)
+        self.__products.append(product)
 
     @property
     def get_list(self):
         product_list = ""
-        for product in self.__products:
-            exp_prod = Product(product)
+        for product in self.get_product:
+            exp_prod = Product(**product)
             product_list += str(exp_prod)
 
         return product_list
@@ -38,4 +38,3 @@ class Category:
             amount_prod += product.get("quantity")
 
         return f'{self.name}, количество продуктов: {amount_prod} шт.'
-
