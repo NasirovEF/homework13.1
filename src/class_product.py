@@ -18,14 +18,14 @@ class Product:
     @get_price.setter
     def get_price(self, price):
         if price <= 0:
-            return "Введена не корректная цена"
+            print("Введена не корректная цена")
         if price < self.__price:
-            print("Заявленная цена ниже существующей, вы действительно хотите снизить цену")
+            print("Заявленная цена ниже существующей, вы действительно хотите снизить цену?")
             user_input = input("Введите 'y' для подтверждения")
             if user_input.lower() == "y":
                 self.__price = price
             else:
-                return "Цена сохранена прежняя"
+                print("Цена сохранена прежняя")
 
         else:
             self.__price = price
@@ -34,4 +34,4 @@ class Product:
         return f'\n{self.name}, {self.get_price} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
-        return self.__price * self.quantity + other.__price * other.quantity
+        return self.get_price * self.quantity + other.get_price * other.quantity
