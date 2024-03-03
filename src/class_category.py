@@ -1,4 +1,4 @@
-from class_product import Product
+from class_product import *
 
 
 class Category:
@@ -21,7 +21,10 @@ class Category:
 
     @get_product.setter
     def get_product(self, product):
-        self.__products.append(product)
+        if isinstance(product, (Smartphone, LawnGrass, Product)):
+            self.__products.append(product)
+        else:
+            raise PermissionError('товар не является продуктом одной из категории')
 
     @property
     def get_list(self):
