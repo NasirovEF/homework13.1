@@ -34,4 +34,29 @@ class Product:
         return f'\n{self.name}, {self.get_price} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
-        return self.get_price * self.quantity + other.get_price * other.quantity
+        if type(self.__class__) is type(other.__class__):
+            return self.get_price * self.quantity + other.get_price * other.quantity
+        else:
+            raise PermissionError('Невозможно сложить разные типы продуктов')
+
+
+class Smartphone(Product):
+    """класс Смартфоны"""
+
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    """класс Трава газонная"""
+
+    def __init__(self, name, description, price, quantity, country, germination, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination = germination
+        self.color = color
+
