@@ -1,4 +1,18 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class Base(ABC):
+    """Абстрактный класс"""
+
+    @property
+    @abstractmethod
+    def get_price(self):
+        pass
+
+class MixinInform:
+    def __repr__(self):
+
+class Product(Base):
     """Класс товара"""
 
     def __init__(self, name, description, price, quantity):
@@ -59,4 +73,3 @@ class LawnGrass(Product):
         self.country = country
         self.germination = germination
         self.color = color
-
