@@ -9,6 +9,11 @@ class Base(ABC):
     def get_price(self):
         pass
 
+    @classmethod
+    @abstractmethod
+    def get_product(cls, prod_dict):
+        pass
+
 
 class MixinInform:
     def __init__(self, *args):
