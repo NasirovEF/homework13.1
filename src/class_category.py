@@ -22,9 +22,12 @@ class Category:
     @get_product.setter
     def get_product(self, product):
         if isinstance(product, (Smartphone, LawnGrass, Product)):
-            self.__products.append(product)
+            if product.quantity > 0:
+                self.__products.append(product)
+            else:
+                raise ValueError('товар с нулевым количеством не может быть добавлен')
         else:
-            raise PermissionError('товар не является продуктом одной из категории')
+            raise ValueError('товар не является продуктом одной из категории')
 
     @property
     def get_list(self):
@@ -34,6 +37,17 @@ class Category:
             product_list += str(exp_prod)
 
         return product_list
+
+    def average_price(self):
+        try:
+            sum_price = 0
+            for product in self.get_product:
+                sum_price += product.get("price")
+            avg_price = round(sum_price / len(self.get_product))
+            return avg_price
+
+        except ZeroDivisionError:
+            return 0
 
     def __str__(self):
         amount_prod = 0
